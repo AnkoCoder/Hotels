@@ -1,12 +1,18 @@
-<html>
-    <h1>Hotels</h1>
-    <table>
-        {% for hotel in hotels %}
-        <tr>
-            <td>{{ hotel.name }}</td>
-            <td>{{ hotel.stars }}</td>
-            <td>{{ hotel.price }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+<h1>Hotels</h1>
+<table class="table table-hover">
+    <thead>
+        <th>Name</th>
+        <th>Stars</th>
+        <th>Price</th>
+    </thead>
+    {% for hotel in hotels %}
+    <tr>
+        <td>{{ hotel.name }}</td>
+        <td>{{ hotel.stars }}</td>
+        <td>{{ hotel.price }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

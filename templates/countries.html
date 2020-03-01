@@ -1,8 +1,9 @@
-<html>
-    <h1>Countries</h1>
-    <ul>
-        {% for country in countries %}
-        <li><a href="/countries/{{ country }}">{{ country }}</a></li>
-        {% endfor %}
-    </ul>
-</html>
+{% extends "layout.html" %}
+{% block content %}
+<h1>Countries</h1>
+<ul class="list-group">
+    {% for country in countries %}
+    <li class="list-group-item"><a href="/countries/{{ country }}">{{ country }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
