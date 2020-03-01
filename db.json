@@ -1,0 +1,36 @@
+{
+    "UAE": [
+        {
+            "name": "Al Khoory Executive Hotel", 
+            "stars": 3,
+            "price": 20
+        },
+        {
+            "name": "Ibis Al Barsha",
+            "stars": 3,
+            "price": 30
+        },
+        {
+            "name": " Hyatt Place Al Rigga",
+            "stars": 4,
+            "price": 50
+        }
+    ],
+    "Egypt": [
+        {
+            "name": "Al Khoory Executive Hotel", 
+            "stars": 3,
+            "price": 40
+        },
+        {
+            "name": "Dreams Beach",
+            "stars": 5,
+            "price": 90
+        },
+        {
+            "name": "Sharm Plaza",
+            "stars": 5,
+            "price": 70
+        }
+    ]
+}

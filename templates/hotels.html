@@ -1,0 +1,12 @@
+<html>
+    <h1>Hotels</h1>
+    <table>
+        {% for hotel in hotels %}
+        <tr>
+            <td>{{ hotel.name }}</td>
+            <td>{{ hotel.stars }}</td>
+            <td>{{ hotel.price }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</html>
