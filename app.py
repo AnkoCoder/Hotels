@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, abort
 import json
 
 app = Flask(__name__)
@@ -21,5 +21,13 @@ def countries():
 def country(name):
     with open('db.json') as f:
         countries = json.load(f)
-        hotels = countries[name]
+        try:
+            hotels = countries[name]
+        except KeyError:
+            abort(404)
     return render_template('hotels.html', hotels=hotels)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
