@@ -8,15 +8,13 @@ app = Flask(__name__)
 def countries():
     with open('db.json') as f:
         countries = json.load(f)
-        result = []
-        for country in countries:
-            result.append(
-                { 
-                    'name': country, 
-                    'count': len(countries[country])
-                }
-            )
-    return render_template('countries.html', countries=result)
+        countries = [
+            { 
+                'name': country, 
+                'count': len(countries[country])
+            } for country in countries
+        ]
+    return render_template('countries.html', countries=countries)
 
 
 @app.route('/countries/<name>')
