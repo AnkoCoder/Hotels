@@ -1,9 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
 <h1>Countries</h1>
-<ul class="list-group">
+<table class="table table-hover">
+    <thead>
+        <th>Country</th>
+        <th>Hotel count</th>
+    </thead>
     {% for country in countries %}
-    <li class="list-group-item"><a href="/countries/{{ country }}">{{ country }}</a></li>
+    <tr>
+        <td><a href="/countries/{{ country.name }}">{{ country.name }}</a></td>
+        <td>{{ country.count }}</td>
+    </tr>
     {% endfor %}
-</ul>
+</table>
 {% endblock %}
