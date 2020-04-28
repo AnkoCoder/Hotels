@@ -1,7 +1,16 @@
 body {
     padding-top: 56px;
+    padding-bottom: 56px;
 }
   
 .portfolio-item {
   margin-bottom: 30px;
+}
+
+.home_pic {
+  height: 300px;
+}
+
+.background {
+  background: orange;
 }
