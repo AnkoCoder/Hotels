@@ -47,22 +47,20 @@ def home():
 
 @app.route('/countries')
 def countries():
-    pass
-    #return render_template('countries.html', countries=countries)
+    return render_template('countries.html')
 
 
-@app.route('/countries/<name>')
-def country(name):
-    pass
-    #return render_template('hotels.html', hotels=hotels)
+# @app.route('/countries/<name>')
+# def country(name):
+#     pass
+#     #return render_template('hotels.html', hotels=hotels)
 
 
 @app.route('/hotels')
 def hotels():
-    pass
-    #return render_template('.html', hotels=hotels)
+    return render_template('hotels.html')
 
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html'), 404
+# @app.errorhandler(404)
+# def page_not_found(e):
+#     return render_template('404.html'), 404
