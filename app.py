@@ -15,16 +15,16 @@ class Country(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
     discription = db.Column(db.String(400), unique=True, nullable=False)
-    photo = db.Column(db.String(1000), unique=True, nullable=False)
+    photo = db.Column(db.String(1000), nullable=False)
     items = db.relationship('Hotel', backref='country')
 
 class Hotel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     country_id = db.Column(db.Integer, db.ForeignKey('country.id'), nullable=False)
     name = db.Column(db.String(80), unique=True, nullable=False)
-    stars = db.Column(db.String(20), unique=True, nullable=False)
+    stars = db.Column(db.String(20), nullable=False)
     discription = db.Column(db.String(400), unique=True, nullable=False)
-    photo = db.Column(db.String(1000), unique=True, nullable=False)
+    photo = db.Column(db.String(1000), nullable=False)
     cost = db.Column(db.Integer, nullable=False)
 
 
@@ -46,8 +46,9 @@ def home():
 
 
 @app.route('/countries')
-def countries():
-    return render_template('countries.html')
+def country():
+    countries = Country.query.all()
+    return render_template('countries.html', countries=countries)
 
 
 # @app.route('/countries/<name>')
