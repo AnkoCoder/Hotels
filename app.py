@@ -14,7 +14,7 @@ db = SQLAlchemy(app)
 class Country(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
-    discription = db.Column(db.String(400), unique=True, nullable=False)
+    description = db.Column(db.String(400), unique=True, nullable=False)
     photo = db.Column(db.String(1000), nullable=False)
     items = db.relationship('Hotel', backref='country')
 
@@ -22,10 +22,10 @@ class Hotel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     country_id = db.Column(db.Integer, db.ForeignKey('country.id'), nullable=False)
     name = db.Column(db.String(80), unique=True, nullable=False)
-    stars = db.Column(db.String(20), nullable=False)
-    discription = db.Column(db.String(400), unique=True, nullable=False)
+    stars = db.Column(db.Integer, nullable=False)
+    description = db.Column(db.String(400), unique=True, nullable=False)
     photo = db.Column(db.String(1000), nullable=False)
-    cost = db.Column(db.Integer, nullable=False)
+    booking_page = db.Column(db.String(400), nullable=False)
 
 
 # Отображение колонок, которые необходимо видеть в админке
@@ -51,15 +51,16 @@ def country():
     return render_template('countries.html', countries=countries)
 
 
-# @app.route('/countries/<name>')
-# def country(name):
+# @app.route('/countries/<id>')
+# def country(id):
 #     pass
 #     #return render_template('hotels.html', hotels=hotels)
 
 
 @app.route('/hotels')
 def hotels():
-    return render_template('hotels.html')
+    hotels = Hotel.query.all()
+    return render_template('hotels.html', hotels=hotels)
 
 
 @app.errorhandler(404)

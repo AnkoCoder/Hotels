@@ -2,18 +2,18 @@
 {% block content %}
 
   <!-- Marketing Icons Section -->
-<div class="container">
+<div class="container head_space">
   <h2>Countries</h2>
   <div class="row">
     {% for country in countries %}
     <div class="col-lg-4 mb-4">
       <div class="card h-100">
-        <h4 class="card-header">{{ country.name }}</h4>
+        <a href="/country/{{ country.id }}/"><h4 class="card-header">{{ country.name }}</h4></a>
         <div class="card-footer">
-          <img class="card-img-top" src="{{ country.photo }}" alt="">
+          <img class="card-img-top country_pic" src="{{ country.photo }}" alt="">
         </div>
         <div class="card-body">
-          <p class="card-text">{{ country.discription }}</p>
+          <p class="card-text">{{ country.description }}</p>
         </div>
       </div>
     </div>
