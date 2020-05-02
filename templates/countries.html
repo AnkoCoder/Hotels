@@ -3,7 +3,29 @@
 
   <!-- Marketing Icons Section -->
 <div class="container head_space">
-  <h2>Countries</h2>
+  
+  <div class="row search-row">
+    <form method="GET" action="/countries">
+      <div class="row">
+        <div class="col-lg-10">
+          <input name="search" type="text" class="form-control search-input" placeholder="Type a country name"/>
+        </div>
+        <div class="col-lg-2">
+          <input type="submit" class="btn btn-md btn-primary search-button" value="Search"/>
+        </div>
+      </div>
+    </form>
+  </div>
+  {% if search %}
+    {% if countries %}
+      <h3>Found for query "{{ search }}":</h3>
+    {% else %}
+      <h3>Nothing found for query "{{ search }}":</h3>
+    {% endif %}
+  {% endif %}
+  {% if not selected_country and not search %}
+    <h3>Countries:</h3>
+  {% endif %}
   <div class="row">
     {% for country in countries %}
     <div class="col-lg-4 mb-4">

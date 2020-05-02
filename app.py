@@ -33,7 +33,7 @@ class CountryAdmin(ModelView):
     column_list=['id', 'name']
 
 class HotelAdmin(ModelView):
-    column_list=['id', 'name', 'country_id', 'stars', 'cost']
+    column_list=['id', 'name', 'country_id', 'stars']
 
 
 admin.add_view(CountryAdmin(Country, db.session))
@@ -47,14 +47,18 @@ def home():
 
 @app.route('/countries')
 def country():
-    countries = Country.query.all()
-    return render_template('countries.html', countries=countries)
+    search = request.args.get('search')
+    if search:
+        countries = Country.query.filter(func.lower(Country.name).contains(search)).all()
+    else:
+        countries = Country.query.all()
+    return render_template('countries.html', countries=countries, search=search)
 
 
-# @app.route('/countries/<id>')
-# def country(id):
-#     pass
-#     #return render_template('hotels.html', hotels=hotels)
+# @app.route('/countries/<name>')
+# def country_search(name):
+#     selected_country = Country.query.get(Country.name)
+#     return render_template('countries.html', selected_country=selected_country)
 
 
 @app.route('/hotels')
