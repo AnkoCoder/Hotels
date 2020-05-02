@@ -25,3 +25,23 @@ body {
 .head_space{
   padding-top: 35px;
 }
+
+.search-row {
+  margin-top: -10px;
+  margin-bottom: 25px;
+}
+
+.search-input {
+  width: 500px;
+}
+
+.search-button {
+  margin-left: -15px;
+  background: orange;
+  border: orange;
+}
+
+.country {
+  margin-left: 28px;
+  margin-right: 10px;
+}
