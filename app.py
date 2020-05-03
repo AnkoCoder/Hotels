@@ -64,13 +64,19 @@ def country():
 @app.route('/hotels')
 def hotels():
     stars = request.args.getlist('stars')
-    print(request.args)
+    countries = Country.query.all()
+    select_country = request.args.get('country')
     if stars:
         stars = [int(star) for star in stars]
+        if 3 in stars:
+            stars += [1, 2]
         hotels = Hotel.query.filter(Hotel.stars.in_(stars)).all()
     else:
         hotels = Hotel.query.all()
-    return render_template('hotels.html', hotels=hotels, stars=stars)
+    if select_country:
+        selected = Country.query.filter(Country.name == select_country).first()
+        hotels = Hotel.query.filter(Hotel.country_id == selected.id) 
+    return render_template('hotels.html', hotels=hotels, stars=stars, countries=countries)
 
 
 @app.errorhandler(404)
