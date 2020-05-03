@@ -63,8 +63,14 @@ def country():
 
 @app.route('/hotels')
 def hotels():
-    hotels = Hotel.query.all()
-    return render_template('hotels.html', hotels=hotels)
+    stars = request.args.getlist('stars')
+    print(request.args)
+    if stars:
+        stars = [int(star) for star in stars]
+        hotels = Hotel.query.filter(Hotel.stars.in_(stars)).all()
+    else:
+        hotels = Hotel.query.all()
+    return render_template('hotels.html', hotels=hotels, stars=stars)
 
 
 @app.errorhandler(404)
